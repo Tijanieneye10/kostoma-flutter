@@ -13,25 +13,17 @@ It cannot send messages. That is on purpose: see "The API key" below.
 
 ## Installing
 
-The package is not on pub.dev yet. Add it from git or from a path.
-
-From git:
+The package is not on pub.dev yet. Add it from git, pinned to a version tag:
 
 ```yaml
 dependencies:
-    kostoma:
-        git:
-            url: https://github.com/Tijanieneye10/kostoma.git
-            path: sdks/flutter
+  kostoma:
+    git:
+      url: https://github.com/Tijanieneye10/kostoma-flutter.git
+      ref: v0.1.0
 ```
 
-From a path, if you have the repository checked out:
-
-```yaml
-dependencies:
-    kostoma:
-        path: ../kostoma/sdks/flutter
-```
+Pin a tag, not a branch: a tag never moves, so your app gets a new version only when you change `ref`. What a version number promises, and which versions of the SDK work with which API, is in [VERSIONING.md](VERSIONING.md). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
 
 It needs Dart 3.3 or later and Flutter 3.19 or later.
 

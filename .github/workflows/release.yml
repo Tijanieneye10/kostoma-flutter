@@ -1,0 +1,59 @@
+name: release
+
+# Pushing a tag such as v0.2.0 makes a release, once the tag is shown to
+# match the version in the package and the tests pass.
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check the tag is the package's version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          version="$(sed -n 's/^version:[[:space:]]*//p' pubspec.yaml)"
+          if [ "v${version}" != "${TAG}" ]; then
+            echo "The tag is ${TAG} but pubspec.yaml says ${version}. Tag the commit that sets the version." >&2
+            exit 1
+          fi
+          echo "VERSION=${version}" >> "$GITHUB_ENV"
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install packages
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      # The release notes are this version's section of the changelog.
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          awk -v version="${VERSION}" '
+            /^## / { printing = index($0, version) > 0 }
+            printing && !/^## / { print }
+          ' CHANGELOG.md > notes.md
+          gh release create "${TAG}" --title "${TAG}" --notes-file notes.md

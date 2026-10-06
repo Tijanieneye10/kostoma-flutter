@@ -5,3 +5,4 @@ export 'src/log.dart'
 export 'src/platform.dart' show KostomaDevicePlatform;
 export 'src/store.dart'
     show InMemoryKostomaStore, KostomaStore, SharedPreferencesKostomaStore;
+export 'src/version.dart' show kostomaSdkVersion;

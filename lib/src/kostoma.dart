@@ -9,6 +9,7 @@ import 'call.dart';
 import 'log.dart';
 import 'platform.dart';
 import 'store.dart';
+import 'version.dart';
 
 /// Sends people, events and devices from a Flutter app to Kostoma.
 ///
@@ -654,6 +655,7 @@ class Kostoma {
         ..headers['Authorization'] = 'Bearer $_apiKey'
         ..headers['Content-Type'] = 'application/json'
         ..headers['Accept'] = 'application/json'
+        ..headers['X-Kostoma-Sdk'] = 'flutter/$kostomaSdkVersion'
         ..bodyBytes = utf8.encode(jsonEncode(call.body));
       final streamed = await _http.send(request).timeout(requestTimeout);
       return await http.Response.fromStream(streamed).timeout(requestTimeout);

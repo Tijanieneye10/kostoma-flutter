@@ -1,0 +1,56 @@
+{
+  "sdk": "kostoma-flutter",
+  "version": "0.1.0",
+  "api": "v1",
+  "requests": [
+    {
+      "call": "identify",
+      "method": "POST",
+      "path": "/api/v1/identify",
+      "body": {
+        "id": "u_1042",
+        "email": "ada@example.com",
+        "attributes": {
+          "first_name": "Ada",
+          "kyc_level": 2,
+          "is_verified": true,
+          "signed_up_at": 1790705392
+        }
+      }
+    },
+    {
+      "call": "track",
+      "method": "POST",
+      "path": "/api/v1/track",
+      "body": {
+        "id": "u_1042",
+        "name": "transfer_completed",
+        "data": {
+          "amount": 25000,
+          "currency": "NGN"
+        },
+        "timestamp": 1790705392,
+        "event_id": "<event_id>"
+      }
+    },
+    {
+      "call": "registerDevice",
+      "method": "POST",
+      "path": "/api/v1/devices",
+      "body": {
+        "id": "u_1042",
+        "token": "fcm-token-1",
+        "platform": "android",
+        "last_used": 1790705392
+      }
+    },
+    {
+      "call": "removeDevice",
+      "method": "DELETE",
+      "path": "/api/v1/devices",
+      "body": {
+        "token": "fcm-token-1"
+      }
+    }
+  ]
+}
