@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fake_async/fake_async.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
@@ -505,7 +506,7 @@ void main() {
     });
 
     test('a 429 waits for Retry-After before trying again', () {
-      FakeAsync().run((async) {
+      fakeAsync((async) {
         final requests = <http.Request>[];
         final kostoma = Kostoma(
           apiKey: 'kst_test_key',
