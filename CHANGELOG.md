@@ -2,6 +2,11 @@
 
 Every change that someone using the SDK could notice is listed here, newest first. Versions follow [Semantic Versioning](https://semver.org); what that means for this package is in [VERSIONING.md](VERSIONING.md).
 
+## 0.1.1
+
+- The SDK is now published under the MIT license, so it can be used, changed and shipped in your app. See [LICENSE](LICENSE).
+- Nothing the SDK does or sends has changed.
+
 ## 0.1.0
 
 First version.
