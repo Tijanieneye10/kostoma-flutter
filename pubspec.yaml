@@ -1,6 +1,6 @@
 name: kostoma
 description: Kostoma's Flutter SDK. Identify people, track events and register devices for push.
-version: 0.1.0
+version: 0.1.1
 publish_to: none
 repository: https://github.com/Tijanieneye10/kostoma-flutter
 

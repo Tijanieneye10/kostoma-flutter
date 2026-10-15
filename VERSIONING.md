@@ -27,7 +27,7 @@ dependencies:
   kostoma:
     git:
       url: https://github.com/Tijanieneye10/kostoma-flutter.git
-      ref: v0.1.0
+      ref: v0.1.1
 ```
 
 Your `pubspec.lock` then records the exact commit, and nothing changes until you change `ref` yourself.

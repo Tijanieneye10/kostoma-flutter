@@ -20,7 +20,7 @@ dependencies:
   kostoma:
     git:
       url: https://github.com/Tijanieneye10/kostoma-flutter.git
-      ref: v0.1.0
+      ref: v0.1.1
 ```
 
 Pin a tag, not a branch: a tag never moves, so your app gets a new version only when you change `ref`. What a version number promises, and which versions of the SDK work with which API, is in [VERSIONING.md](VERSIONING.md). What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
